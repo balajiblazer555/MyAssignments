@@ -3,22 +3,23 @@ package week1.day2;
 public class Palindrome {
 
 	public static void main(String[] args) {
-
-		 int input =34343;
-		 String s= Integer.toString(input);
-		 int temp=input;
-		 int sum=0;
-		 	 
-		 for(int i=s.length(); i>0; i--) {
-			 sum=(sum*10)+(input%10);
-			 input=input/10;		    	
-             }
-		 
-		 if (temp==sum) {
-			 System.out.println(temp+" is a palindrome number");
-		 }
-		 else {
-			 System.out.println(temp+" is not a palindrome number" );
-		 }
-	}     
-}
+		
+		int num=34343;
+		String s=Integer.toString(num);
+		int temp=num;
+		int reverse=0;
+		
+		for(int i=1;i<=s.length();i++) {
+			
+			reverse=reverse*10 + temp%10;
+			temp = temp/10;
+			
+			}
+		if(reverse==num) {
+			System.out.println(num+" is a palindrome number");
+		}
+		else {
+			System.out.println(num+" is not a palindrome number");
+		}
+		}	
+		}
