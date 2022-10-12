@@ -45,17 +45,16 @@ public class Assign5 {
 		System.out.println("5.The height and width of the button is : "+handw.getSize());
 		
 		//6.Mouse over and confirm the color changed
-		WebElement cssValue = driver.findElement(By.xpath("//button[contains(@class,'raised ui-button-success')]"));
-		String color1=cssValue.getCssValue("background-color");
-		
-		WebElement colorconfirm = driver.findElement(By.xpath("//button[contains(@class,'raised ui-button-success')]"));
-		Actions action = new Actions(driver);
-		action.moveToElement(colorconfirm).perform();
-		Thread.sleep(3000);
-		String color2 = driver.findElement(By.xpath("//button/span[contains(@style,'background-color: salmon')]")).getCssValue("background-color");
-		if(color1!=color2) {
-			System.out.println("6.Colour Change is confirmed");
-		}
+		 WebElement before = driver.findElement(By.xpath("//button[@name='j_idt88:j_idt100']"));
+		 String cssValue = before.getCssValue("background-color");
+		 Actions builder=new Actions(driver);
+		 builder.moveToElement(before).perform();
+		 WebElement after = driver.findElement(By.xpath("(//span[text()='Success'])[1]"));
+		 String cssValue2 = after.getCssValue("background-color");
+		 
+		 if(cssValue.contains(cssValue2)) {
+			System.out.println("6.Colour is not changed");}
+		else{   System.out.println("6.Colour Change is confirmed");}
 		
 		//7.Click Image Button and Click on any hidden button
 		WebElement image = driver.findElement(By.xpath("//button/span[text()='Image']"));
