@@ -28,17 +28,18 @@ public class BookMyShow {
 		driver.findElement(By.xpath("(//span[text()='Tamil']/following::span[text()='2D'])[1]")).click();
 		String venue = driver.findElement(By.xpath("(//a[contains(@class,'venue')])[1]")).getText();
 		System.out.println("Name of the first theatre displayed :"+venue);
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//button[text()='Not Now']")).click();
 		driver.findElement(By.xpath("(//div[text()='INFO'])[1]")).click();
 		String facility = driver.findElement(By.xpath("//div[@class='venue-facilities']")).getText();
 		if(facility.contains("Parking Facility")) {
 		}else {System.out.println("Parking is not available");}
-		driver.findElement(By.xpath("//button[text()='Not Now']")).click();
 		driver.findElement(By.xpath("//div[@class='cross-container']")).click();
 		driver.findElement(By.xpath("(//a[@class='showtime-pill'])[1]")).click();
 		driver.findElement(By.xpath("//div[@id='btnPopupAccept']")).click();
 		driver.findElement(By.xpath("//li[text()='1']")).click();
 		driver.findElement(By.xpath("//div[contains(text(),'Select Seats')]")).click();
-		driver.findElement(By.xpath("//div[@id='B_1_0218']")).click();
+		driver.findElement(By.xpath("//div[@id='B_2_0218']")).click();
 		driver.findElement(By.xpath("(//a[@id='btmcntbook'])[1]")).click();
 		Thread.sleep(2000);
 		String total = driver.findElement(By.xpath("//span[@id='subTT']")).getText();
