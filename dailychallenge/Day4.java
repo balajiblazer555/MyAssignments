@@ -17,9 +17,6 @@ public class Day4 {
 			if (count == 1) {
 				System.out.println(nums[i]);
 			}
-			else {
-				break;
-			}
 		}
 	}
 }
