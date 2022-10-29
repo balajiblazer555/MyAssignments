@@ -19,15 +19,13 @@ public class Assignment13 {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		driver.manage().window().maximize();
 		
-		driver.switchTo().frame(0);
 		Actions act=new Actions(driver);
-		act.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
-		act.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
+		WebElement scroll = driver.findElement(By.xpath("//li/a[text()='Checkboxradio']"));
+		act.scrollToElement(scroll).perform();
 		
+		driver.switchTo().frame(0);
 		WebElement item1 = driver.findElement(By.xpath("//ol/li[text()='Item 1']"));
 		WebElement item5 = driver.findElement(By.xpath("//ol/li[text()='Item 5']"));
-		act.scrollToElement(item5).perform();
 		act.keyDown(Keys.CONTROL).click(item1).click(item5).keyUp(Keys.CONTROL).perform();
 	}
-
 }
