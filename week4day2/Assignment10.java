@@ -19,23 +19,15 @@ public class Assignment10 {
 		driver.get("https://jqueryui.com/draggable");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		driver.manage().window().maximize();
+		Actions act=new Actions(driver);
+		
+		WebElement scroll = driver.findElement(By.xpath("//li/a[text()='Controlgroup']"));
+		act.scrollToElement(scroll).perform();
 		
 		WebElement frame = driver.findElement(By.xpath("//iframe[@class='demo-frame']"));
 		driver.switchTo().frame(frame);
 		
-		Actions act=new Actions(driver);
-		act.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
-		act.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
-		
-		List<WebElement> frameCount = driver.findElements(By.tagName("iframe"));
-		System.out.println(frameCount.size());
-		
 		WebElement drag = driver.findElement(By.xpath("//div[@id='draggable']/p"));
-		act.moveToElement(drag).perform();
-		act.clickAndHold().perform();
-		act.dragAndDropBy(drag, 250, 0).perform();
-		act.release().perform();
-		
+		act.moveToElement(drag).clickAndHold().dragAndDropBy(drag, 250, 0).release().perform();
 	}
-
 }
