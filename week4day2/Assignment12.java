@@ -3,7 +3,6 @@ package week4.day2;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -19,21 +18,14 @@ public class Assignment12 {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		driver.manage().window().maximize();
 		
+		Actions act=new Actions(driver);
+		WebElement scroll = driver.findElement(By.xpath("//li/a[text()='Checkboxradio']"));
+		act.scrollToElement(scroll).perform();
+		
 		WebElement frame = driver.findElement(By.xpath("//iframe[@class='demo-frame']"));
 		driver.switchTo().frame(frame);
 		
-		Actions act=new Actions(driver);
-		act.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
-		act.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
-		
 		WebElement handle = driver.findElement(By.xpath("(//div[@id='resizable']/div)[1]"));
-		act.moveToElement(handle).perform();
-		act.clickAndHold().perform();
-		act.moveByOffset(200, 0).perform();
-		act.release().perform();
-		
-
-
+		act.moveToElement(handle).clickAndHold().moveByOffset(200, 0).release().perform();
 	}
-
 }
